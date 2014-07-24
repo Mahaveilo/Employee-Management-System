@@ -1,14 +1,25 @@
 package model;
 
+import java.util.Date;
+
 public class employee {
+	private int eid;
 	private String eName;
 	private String address;
 	private String phoneNum;
-	private String joinDate;
+	private String email;
+	private String imgPath;
+	private Date joinDate; //the package imported java.util.*, might be wrong, java.sql.*
 	private double salary;
-	private String manager;
-	private boolean isManager;
+	private int manager; //the employee's manager eid
+	private int isManager; //decide whether the employee is a manager, '1' means true, '0' means false
 	
+	public int getEid() {
+		return eid;
+	}
+	public void setEid(int eid) {
+		this.eid = eid;
+	}
 	public String geteName() {
 		return eName;
 	}
@@ -27,10 +38,22 @@ public class employee {
 	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
-	public String getJoinDate() {
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getImgPath() {
+		return imgPath;
+	}
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+	public Date getJoinDate() {
 		return joinDate;
 	}
-	public void setJoinDate(String joinDate) {
+	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
 	}
 	public double getSalary() {
@@ -39,16 +62,16 @@ public class employee {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	public String getManager() {
+	public int getManager() {
 		return manager;
 	}
-	public void setManager(String manager) {
+	public void setManager(int manager) {
 		this.manager = manager;
 	}
-	public boolean isManager() {
+	public int getIsManager() {
 		return isManager;
 	}
-	public void setManager(boolean isManager) {
+	public void setIsManager(int isManager) {
 		this.isManager = isManager;
 	}
 }
