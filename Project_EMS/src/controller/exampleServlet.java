@@ -34,7 +34,7 @@ public class exampleServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("Hello");
 		
-		String query = "SELECT * FROM table";
+		String query = "SELECT * FROM employee";
 		Connection conn = DBconn.getConn();
 		Statement st = DBconn.getStatement(conn);
 		ResultSet rs = DBconn.getResultSet(st, query);
