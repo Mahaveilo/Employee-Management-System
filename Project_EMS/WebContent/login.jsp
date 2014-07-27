@@ -7,6 +7,17 @@
 <title>Login</title>
 </head>
 <body>
-
+	<h1>Login</h1>
+	<form action="LoginPortal" method="post" accept-charset="utf-8">
+		Email: <input type="email" name="email" placeholder="Valid email Address" required/><br/>
+		Password: <input type="password" name="password" placeholder="Your password" required/><br/><br/>
+		<input type="radio" name="managerLogin" value="manegerLogin"/> Login as Manager <br/><br/>
+		<input type="submit" name="login" value="Login"/>
+	</form>
+	
+	<form action="adminLogin.jsp" method="get">
+		Login as Admin: 
+		<input type="submit" name="adminLogin" value="Confirm"/>
+	</form>
 </body>
 </html>

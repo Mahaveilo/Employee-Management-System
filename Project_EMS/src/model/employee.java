@@ -2,8 +2,9 @@ package model;
 
 import java.util.Date;
 
-public class employee {
-	private int eid;
+public class Employee {
+	// POJO, the java bean for employee
+	private int eid; //	read only
 	private String eName;
 	private String address;
 	private String phoneNum;
@@ -16,9 +17,6 @@ public class employee {
 	
 	public int getEid() {
 		return eid;
-	}
-	public void setEid(int eid) {
-		this.eid = eid;
 	}
 	public String geteName() {
 		return eName;

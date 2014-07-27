@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Index</title>
+<title>delEmp</title>
 </head>
 <body>
-	<jsp:forward page="login.jsp"/>
+	<form action="admin.jsp" method="get">
+		<input type="submit" name="back" value="Back"/>
+	</form>
 </body>
 </html>
