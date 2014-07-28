@@ -4,13 +4,14 @@ import java.util.Date;
 
 public class Employee {
 	// POJO, the java bean for employee
-	private int eid; //	read only
+	private int eid;
 	private String eName;
+	private String password;
 	private String address;
 	private String phoneNum;
 	private String email;
 	private String imgPath;
-	private Date joinDate; //the package imported java.util.*, might be wrong, java.sql.*
+	private Date joinDate; //the package imported java.util.*
 	private double salary;
 	private int manager; //the employee's manager eid
 	private int isManager; //decide whether the employee is a manager, '1' means true, '0' means false
@@ -18,11 +19,20 @@ public class Employee {
 	public int getEid() {
 		return eid;
 	}
+	public void setEid(int eid) {
+		this.eid = eid;
+	}
 	public String geteName() {
 		return eName;
 	}
 	public void seteName(String eName) {
 		this.eName = eName;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getAddress() {
 		return address;

@@ -1,16 +1,20 @@
 package model;
 
 public class UpdateReq {
-	private int upid; // read only
+	// POJO for update request
+	private int upid;
 	private int eid;
 	private String eName;
 	private String address;
 	private String phoneNum;
-	private String email;
+	private String password;
 	private String imgPath;
 	
 	public int getUpid() {
 		return upid;
+	}
+	public void setUpid(int upid) {
+		this.upid = upid;
 	}
 	public int getEid() {
 		return eid;
@@ -36,11 +40,11 @@ public class UpdateReq {
 	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
-	public String getEmail() {
-		return email;
+	public String getPassword() {
+		return password;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getImgPath() {
 		return imgPath;
