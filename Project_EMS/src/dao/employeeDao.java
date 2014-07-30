@@ -29,4 +29,21 @@ public class EmployeeDao {
 			DBconn.close(conn);
 		}
 	}
+	
+	public boolean loginAuthentication(String email, String password) {
+		// user login authentication
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rs= st.executeQuery("select * from employee where email='" + email + "' and password='" + password + "'");
+			if(rs.next())
+				return true;
+			else 
+				return false;
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBconn.close(conn);
+		}
+		return false;
+	}
 }

@@ -1,25 +1,26 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dao.*;
+
+import dao.AdminDao;
 
 /**
- * Servlet implementation class LoginPortal
+ * Servlet implementation class DelEmployee
  */
-@WebServlet("/LoginPortal")
-public class LoginPortal extends HttpServlet {
-	// employee / manager login portal
+@WebServlet("/DelEmployee")
+public class DelEmployee extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginPortal() {
+    public DelEmployee() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,13 +36,10 @@ public class LoginPortal extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		EmployeeDao eDao = new EmployeeDao();
-		if(eDao.loginAuthentication(email, password))
-			response.sendRedirect("employee.jsp");
-		else
-			response.sendRedirect("login.jsp");
+		AdminDao aDao = new AdminDao();
+		String[] delList = request.getParameterValues("emplist");
+		for(String tmp : delList)
+			aDao.deleteEmployee(Integer.parseInt(tmp));
 	}
 
 }

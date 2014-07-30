@@ -7,6 +7,18 @@
 <title>addEmp</title>
 </head>
 <body>
+	<form action="AddEmployee" method="post" accept-charset="utf-8">
+		Name: <input type="text" name="ename" required/><br/>
+		Password: <input type="text" name="pwd"/><br/>
+		Address: <input type="text" name="add"/><br/>
+		Phone: <input type="text" name="phone"/><br/>
+		Email: <input type="email" name="email"/><br/>
+		Salary: <input type="text" name="salary"/><br/>
+		Is Manager: <input type="radio" name="ismanager" value="1">Yes 
+		<input type="radio" name="ismanager" value="0">No<br/>
+		Manager: <input type="text" name="manager" /><br/>
+		<input type="submit" name="back" value="Add"/>
+	</form>
 	<form action="admin.jsp" method="get">
 		<input type="submit" name="back" value="Back"/>
 	</form>

@@ -16,7 +16,7 @@ public class AdminDao {
 	public void addEmployee(Employee employee) {
 		// add a new employee
 		try {
-			PreparedStatement ps = conn.prepareStatement("insert into employee (ename, address, phonenum, email, imgpath, joindate, salary, manager, ismanager, password) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement ps = conn.prepareStatement("insert into employee (eid, ename, address, phonenum, email, imgpath, joindate, salary, manager, ismanager, password) values (emp_incre.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			ps.setString(1, employee.geteName());
 			ps.setString(2, employee.getAddress());
 			ps.setString(3, employee.getPhoneNum());
@@ -38,7 +38,7 @@ public class AdminDao {
 	public void deleteEmployee(int eid) {
 		// delete employee whose ID = EID
 		try {
-			PreparedStatement ps = conn.prepareStatement("delete from emloyee where eid=?");
+			PreparedStatement ps = conn.prepareStatement("delete from employee where eid=?");
 			ps.setInt(1, eid);
 			ps.executeUpdate();
 		} catch(Exception e) {

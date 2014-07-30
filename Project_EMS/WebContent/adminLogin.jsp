@@ -8,8 +8,7 @@
 </head>
 <body>
 	<form action="AdminPortal" method="post" accept-charset="utf-8">
-        Email: <input type="email" name="email" placeholder="Valid email Address" required/><br/>
-		Password: <input type="password" name="password" placeholder="Your password" required/><br/><br/>
+        Password: <input type="password" name="password" placeholder="Your password" required/><br/><br/>
         <input type="submit" value="Login">
 	</form>  
 	<form action="login.jsp" method="get">
