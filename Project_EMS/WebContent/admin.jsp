@@ -37,9 +37,8 @@
 	
 	<br/>
 	<%  
-		AdminDao aDao = new AdminDao();
 		ArrayList<Employee> list = new ArrayList<Employee>();
-		list = aDao.getAllEmployees();
+		list = AdminDao.getAllEmployees();
 		for(Employee emp : list) {
 			out.println(emp.geteName());
 	%>

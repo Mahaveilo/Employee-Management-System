@@ -7,14 +7,10 @@ import dbc.*;
 import model.*;
 
 public class ManagerDao {
-	// constructor, create new connection
-	private Connection conn;
-	public ManagerDao() {
-		conn = DBconn.getConn();
-	}
-	
-	public boolean isManagerOrNot(Employee employee) {
+	// manager dao class
+	public static boolean isManagerOrNot(Employee employee) {
 		// decide whether the current employee is manager
+		Connection conn = DBconn.getConn();
 		boolean result = false;
 		try {
 			int eid = employee.getEid();
@@ -33,8 +29,9 @@ public class ManagerDao {
 		return result;
 	}
 	
-	public ArrayList<Employee> getReportList(Employee manager) {
+	public static ArrayList<Employee> getReportList(Employee manager) {
 		// get list of manager's employee
+		Connection conn = DBconn.getConn();
 		ArrayList<Employee> result = new ArrayList<Employee>();
 		int managerID = manager.getEid();
 		try {

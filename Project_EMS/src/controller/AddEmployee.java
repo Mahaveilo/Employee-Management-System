@@ -38,7 +38,6 @@ public class AddEmployee extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AdminDao aDao = new AdminDao();
 		Employee emp = new Employee();
 		emp.seteName(request.getParameter("ename"));
 		emp.setAddress(request.getParameter("add"));
@@ -50,7 +49,7 @@ public class AddEmployee extends HttpServlet {
 		emp.setManager(Integer.parseInt(request.getParameter("manager")));
 		emp.setJoinDate(new Date());
 		emp.setImgPath("null");
-		aDao.addEmployee(emp);
+		AdminDao.addEmployee(emp);
 		response.sendRedirect("admin.jsp");
 	}
 

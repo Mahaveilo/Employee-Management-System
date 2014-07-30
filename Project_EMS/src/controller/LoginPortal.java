@@ -37,8 +37,7 @@ public class LoginPortal extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		EmployeeDao eDao = new EmployeeDao();
-		if(eDao.loginAuthentication(email, password))
+		if(EmployeeDao.loginAuthentication(email, password))
 			response.sendRedirect("employee.jsp");
 		else
 			response.sendRedirect("login.jsp");

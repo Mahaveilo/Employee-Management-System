@@ -6,14 +6,10 @@ import dbc.*;
 import model.*;
 
 public class EmployeeDao {
-	// constructor, create new connection
-	private Connection conn;
-	public EmployeeDao() {
-		conn = DBconn.getConn();
-	}
-	
-	public void updateRequest(UpdateReq updateReq) {
+	// employee dao class
+	public static void updateRequest(UpdateReq updateReq) {
 		// generate the update information, similar as insert a new record in UpdateReq table
+		Connection conn = DBconn.getConn();
 		try {
 			PreparedStatement ps = conn.prepareStatement("insert into updatereq (ename, password, address, phonenum, imgpath, eid) values (?, ?, ?, ?, ?, ?)");
 			ps.setString(1, updateReq.geteName());
@@ -30,8 +26,9 @@ public class EmployeeDao {
 		}
 	}
 	
-	public boolean loginAuthentication(String email, String password) {
+	public static boolean loginAuthentication(String email, String password) {
 		// user login authentication
+		Connection conn = DBconn.getConn();
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs= st.executeQuery("select * from employee where email='" + email + "' and password='" + password + "'");

@@ -6,15 +6,10 @@ import dbc.*;
 import model.*;
 
 public class AdminDao {
-	// constructor, create new connection
-	private Connection conn;
-	public AdminDao() {
-		conn = DBconn.getConn();
-	}
-	
 	// CRUD of employee
-	public void addEmployee(Employee employee) {
+	public static void addEmployee(Employee employee) {
 		// add a new employee
+		Connection conn = DBconn.getConn();
 		try {
 			PreparedStatement ps = conn.prepareStatement("insert into employee (eid, ename, address, phonenum, email, imgpath, joindate, salary, manager, ismanager, password) values (emp_incre.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			ps.setString(1, employee.geteName());
@@ -35,8 +30,9 @@ public class AdminDao {
 		}
 	}
 	
-	public void deleteEmployee(int eid) {
+	public static void deleteEmployee(int eid) {
 		// delete employee whose ID = EID
+		Connection conn = DBconn.getConn();
 		try {
 			PreparedStatement ps = conn.prepareStatement("delete from employee where eid=?");
 			ps.setInt(1, eid);
@@ -48,9 +44,10 @@ public class AdminDao {
 		}
 	}
 	
-	public void updateEmployee(UpdateReq updateReq) {
+	public static void updateEmployee(UpdateReq updateReq) {
 		// update employee information, find the targets in Employee table, 
 		// and delete the record in updateReq
+		Connection conn = DBconn.getConn();
 		try {
 			PreparedStatement ps = conn.prepareStatement("update employee set ename=?, password=?, address=?, phonenum=?, imgpath=? where eid=?");
 			ps.setString(1, updateReq.geteName());
@@ -67,8 +64,9 @@ public class AdminDao {
 		}
 	}
 	
-	public ArrayList<Employee> getAllEmployees() {
+	public static ArrayList<Employee> getAllEmployees() {
 		// get list of all employees
+		Connection conn = DBconn.getConn();
 		ArrayList<Employee> result = new ArrayList<Employee>();
 		try {
 			Statement st = conn.createStatement();
@@ -96,8 +94,9 @@ public class AdminDao {
 		return result;
 	}
 	
-	public Employee getEmployeeById(int eid) {
+	public static Employee getEmployeeById(int eid) {
 		// get the specified employee
+		Connection conn = DBconn.getConn();
 		Employee result = new Employee();
 		try {
 			PreparedStatement ps = conn.prepareStatement("select * from employee where eid=?");
@@ -125,8 +124,9 @@ public class AdminDao {
 	}
 	
 	// CRUD of department
-	public void addDepartment(Department department) {
+	public static void addDepartment(Department department) {
 		// add new department
+		Connection conn = DBconn.getConn();
 		try {
 			PreparedStatement ps = conn.prepareStatement("insert into department (dname) values (?)");
 			ps.setString(1, department.getdName());
@@ -138,8 +138,9 @@ public class AdminDao {
 		}
 	}
 	
-	public void deleteDepartment(int did) {
+	public static void deleteDepartment(int did) {
 		// delete department which ID = DID
+		Connection conn = DBconn.getConn();
 		try {
 			PreparedStatement ps = conn.prepareStatement("delete from department where did=?");
 			ps.setInt(1, did);
@@ -151,8 +152,9 @@ public class AdminDao {
 		}
 	}
 	
-	public void updateDepartment(Department department) {
+	public static void updateDepartment(Department department) {
 		// update the specified department
+		Connection conn = DBconn.getConn();
 		try {
 			PreparedStatement ps = conn.prepareStatement("update department set dname=? where did=?");
 			ps.setString(1, department.getdName());
@@ -165,8 +167,9 @@ public class AdminDao {
 		}
 	}
 	
-	public ArrayList<Department> getAllDepartments() {
+	public static ArrayList<Department> getAllDepartments() {
 		// get list of all Departments
+		Connection conn = DBconn.getConn();
 		ArrayList<Department> result = new ArrayList<Department>();
 		try {
 			Statement st = conn.createStatement();
@@ -185,8 +188,9 @@ public class AdminDao {
 		return result;
 	}
 	
-	public Department getDepartmentById(int did) {
+	public static Department getDepartmentById(int did) {
 		// get the specified Department
+		Connection conn = DBconn.getConn();
 		Department result = new Department();
 		try {
 			PreparedStatement ps = conn.prepareStatement("select * from department where did=?");
@@ -205,8 +209,9 @@ public class AdminDao {
 	}
 	
 	// associate designation
-	public void designAssociate(int eid, int did) {
+	public static void designAssociate(int eid, int did) {
 		// which means insert a new record in empdpt table
+		Connection conn = DBconn.getConn();
 		try {
 			PreparedStatement ps = conn.prepareStatement("insert into empdpt (eid, did) values (?, ?)");
 			ps.setInt(1, eid);

@@ -36,10 +36,10 @@ public class DelEmployee extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AdminDao aDao = new AdminDao();
 		String[] delList = request.getParameterValues("emplist");
 		for(String tmp : delList)
-			aDao.deleteEmployee(Integer.parseInt(tmp));
+			AdminDao.deleteEmployee(Integer.parseInt(tmp));
+		response.sendRedirect("admin.jsp");
 	}
 
 }
