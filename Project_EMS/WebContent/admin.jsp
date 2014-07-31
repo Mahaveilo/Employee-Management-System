@@ -31,16 +31,33 @@
 		Update Department:
 		<input type="submit" name="upD" value="submit"/>
 	</form>
+	<form action="designateDpt.jsp" method="get">
+		Designate Associate:
+		<input type="submit" name="desDpt" value="submit"/>
+	</form>
 	<form action="login.jsp" method="get">
 		<input type="submit" name="logout" value="Logout"/>
 	</form>
 	
 	<br/>
+	Employees:<br/>
 	<%  
 		ArrayList<Employee> list = new ArrayList<Employee>();
 		list = AdminDao.getAllEmployees();
 		for(Employee emp : list) {
 			out.println(emp.geteName());
+	%>
+	<br/>
+	<%
+		}
+	%>
+	<br/><br/>
+	Departments:<br/>
+	<%  
+		ArrayList<Department> dpts = new ArrayList<Department>();
+		dpts = AdminDao.getAllDepartments();
+		for(Department dpt : dpts) {
+			out.println(dpt.getdName());
 	%>
 	<br/>
 	<%

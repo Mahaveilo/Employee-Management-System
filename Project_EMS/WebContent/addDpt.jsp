@@ -7,6 +7,10 @@
 <title>addDpt</title>
 </head>
 <body>
+	<form action="AddDepartment" method="post" accept-charset="utf-8">
+		Name: <input type="text" name="dname" required/><br/>
+		<input type="submit" name="add" value="Add"/>
+	</form>
 	<form action="admin.jsp" method="get">
 		<input type="submit" name="back" value="Back"/>
 	</form>

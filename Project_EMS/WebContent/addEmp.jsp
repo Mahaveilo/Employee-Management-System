@@ -17,7 +17,7 @@
 		Is Manager: <input type="radio" name="ismanager" value="1">Yes 
 		<input type="radio" name="ismanager" value="0">No<br/>
 		Manager: <input type="text" name="manager" /><br/>
-		<input type="submit" name="back" value="Add"/>
+		<input type="submit" name="add" value="Add"/>
 	</form>
 	<form action="admin.jsp" method="get">
 		<input type="submit" name="back" value="Back"/>

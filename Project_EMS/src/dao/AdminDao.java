@@ -128,7 +128,7 @@ public class AdminDao {
 		// add new department
 		Connection conn = DBconn.getConn();
 		try {
-			PreparedStatement ps = conn.prepareStatement("insert into department (dname) values (?)");
+			PreparedStatement ps = conn.prepareStatement("insert into department (did, dname) values (dpt_incre.nextval, ?)");
 			ps.setString(1, department.getdName());
 			ps.executeUpdate();
 		} catch(Exception e) {
@@ -213,7 +213,7 @@ public class AdminDao {
 		// which means insert a new record in empdpt table
 		Connection conn = DBconn.getConn();
 		try {
-			PreparedStatement ps = conn.prepareStatement("insert into empdpt (eid, did) values (?, ?)");
+			PreparedStatement ps = conn.prepareStatement("insert into empdpt (edid, eid, did) values (ed_incre.nextval, ?, ?)");
 			ps.setInt(1, eid);
 			ps.setInt(2, did);
 			ps.executeUpdate();
