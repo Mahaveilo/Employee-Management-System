@@ -123,6 +123,35 @@ public class AdminDao {
 		return result;
 	}
 	
+	public static Employee getEmployeeByEmail(String email) {
+		// get the specified employee by email address
+		Connection conn = DBconn.getConn();
+		Employee result = new Employee();
+		try {
+			PreparedStatement ps = conn.prepareStatement("select * from employee where email=?");
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				result.setEid(rs.getInt("eid"));
+				result.setAddress(rs.getString("address"));
+				result.setEmail(rs.getString("email"));
+				result.seteName(rs.getString("ename"));
+				result.setImgPath(rs.getString("imgpath"));
+				result.setIsManager(rs.getInt("ismanager"));
+				result.setJoinDate(rs.getDate("joindate"));
+				result.setManager(rs.getInt("manager"));
+				result.setPassword(rs.getString("password"));
+				result.setPhoneNum(rs.getString("phonenum"));
+				result.setSalary(rs.getDouble("salary"));
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBconn.close(conn);
+		}
+		return result;
+	}
+	
 	// CRUD of department
 	public static void addDepartment(Department department) {
 		// add new department

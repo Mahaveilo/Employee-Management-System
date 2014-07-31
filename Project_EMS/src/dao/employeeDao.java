@@ -11,7 +11,7 @@ public class EmployeeDao {
 		// generate the update information, similar as insert a new record in UpdateReq table
 		Connection conn = DBconn.getConn();
 		try {
-			PreparedStatement ps = conn.prepareStatement("insert into updatereq (ename, password, address, phonenum, imgpath, eid) values (?, ?, ?, ?, ?, ?)");
+			PreparedStatement ps = conn.prepareStatement("insert into updatereq (upid, ename, password, address, phonenum, imgpath, eid) values (ur_incre.nextval, ?, ?, ?, ?, ?, ?)");
 			ps.setString(1, updateReq.geteName());
 			ps.setString(2, updateReq.getPassword());
 			ps.setString(3, updateReq.getAddress());

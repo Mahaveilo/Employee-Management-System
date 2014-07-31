@@ -1,29 +1,23 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import model.Employee;
-import dao.*;
 
 /**
- * Servlet implementation class LoginPortal
+ * Servlet implementation class UpdateEmp
  */
-@WebServlet("/LoginPortal")
-public class LoginPortal extends HttpServlet {
-	// employee / manager login portal
+@WebServlet("/UpdateEmp")
+public class UpdateEmp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginPortal() {
+    public UpdateEmp() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,17 +33,7 @@ public class LoginPortal extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		if(EmployeeDao.loginAuthentication(email, password)) {
-			Employee emp = new Employee();
-			emp = AdminDao.getEmployeeByEmail(email);
-			HttpSession session = request.getSession(true);	    
-	        session.setAttribute("currentEmployee", emp);
-			response.sendRedirect("employee.jsp");
-		}
-		else
-			response.sendRedirect("login.jsp");
+		// TODO Auto-generated method stub
 	}
 
 }
