@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%! Connection conn = DBconn.getConn(); %>
-	Current designate:<br/>
+	Current designate:<br/><br/>
 	<% 
 		try {
 			Statement st = conn.createStatement();
@@ -26,7 +26,7 @@
 			DBconn.close(conn);
 		}
 	%>
-	Choose employees and relative departments: <br/>
+	<br/><br/>Choose employees and relative departments:
 	<form action="DesignateDept" method="post">
 		<br/>Employees:<br/>
 		<%  
