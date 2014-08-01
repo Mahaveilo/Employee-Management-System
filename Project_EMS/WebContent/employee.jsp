@@ -14,12 +14,12 @@
 		out.print(emp.geteName());
 	%>
 	<br/><br/>Update Request: <br/>
-	<form action="UpdateEmp" method="post" accept-charset="utf-8">
-		name: <input type="text" name="" required><br/>
-		password: <input type="text" name="" required><br/>
-		address: <input type="text" name="" required><br/>
-		phone number: <input type="text" name="" required><br/>
-		img path: <input type="text" name="" required><br/>
+	<form action="UpdateEmpReq" method="post" accept-charset="utf-8">
+		name: <input type="text" name="ename" required><br/>
+		password: <input type="text" name="pwd" required><br/>
+		address: <input type="text" name="add" required><br/>
+		phone number: <input type="text" name="phon" required><br/>
+		img path: <input type="text" name="imgp" required><br/>
 		<input type="submit" name="update" value="Update">
 	</form>
 	<form action="login.jsp" method="get">

@@ -44,18 +44,63 @@ public class AdminDao {
 		}
 	}
 	
-	public static void updateEmployee(UpdateReq updateReq) {
+	public static void updateEmployee(int upid) {
 		// update employee information, find the targets in Employee table, 
 		// and delete the record in updateReq
 		Connection conn = DBconn.getConn();
 		try {
-			PreparedStatement ps = conn.prepareStatement("update employee set ename=?, password=?, address=?, phonenum=?, imgpath=? where eid=?");
-			ps.setString(1, updateReq.geteName());
-			ps.setString(2, updateReq.getPassword());
-			ps.setString(3, updateReq.getAddress());
-			ps.setString(4, updateReq.getPhoneNum());
-			ps.setString(5, updateReq.getImgPath());
-			ps.setInt(6, updateReq.getEid());
+			PreparedStatement ps = conn.prepareStatement("select * from updatereq where upid=?");
+			ps.setInt(1, upid);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				PreparedStatement ps2 = conn.prepareStatement("update employee set ename=?, password=?, address=?, phonenum=?, imgpath=? where eid=?");
+				ps2.setString(1, rs.getString("ename"));
+				ps2.setString(2, rs.getString("password"));
+				ps2.setString(3, rs.getString("address"));
+				ps2.setString(4, rs.getString("phonenum"));
+				ps2.setString(5, rs.getString("imgpath"));
+				ps2.setInt(6, rs.getInt("eid"));
+				ps2.executeUpdate();
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBconn.close(conn);
+		}
+	}
+	
+	public static ArrayList<UpdateReq> getUpdateReqs() {
+		// get list of all update requests
+		Connection conn = DBconn.getConn();
+		ArrayList<UpdateReq> result = new ArrayList<UpdateReq>();
+		try {
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("select * from updatereq");
+			while (rs.next()) {
+				UpdateReq upr = new UpdateReq();
+				upr.setEid(rs.getInt("eid"));
+				upr.setAddress(rs.getString("address"));
+				upr.seteName(rs.getString("eName"));
+				upr.setImgPath(rs.getString("imgpath"));
+				upr.setPassword(rs.getString("password"));
+				upr.setPhoneNum(rs.getString("phonenum"));
+				upr.setUpid(rs.getInt("upid"));
+				result.add(upr);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBconn.close(conn);
+		}
+		return result;
+	}
+	
+	public static void deleteUpdateReq(int upid) {
+		// delete the specified update request
+		Connection conn = DBconn.getConn();
+		try {
+			PreparedStatement ps = conn.prepareStatement("delete from updatereq where upid=?");
+			ps.setInt(1, upid);
 			ps.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
