@@ -11,7 +11,8 @@
 	<form action="LoginPortal" method="post" accept-charset="utf-8">
 		Email: <input type="email" name="email" placeholder="Valid email Address" required/><br/>
 		Password: <input type="password" name="password" placeholder="Your password" required/><br/><br/>
-		<input type="radio" name="managerLogin" value="maneger"/> Login as Manager <br/><br/>
+		<input type="radio" name="managerLogin" value="maneger"/> Login as Manager <br/>
+		<input type="radio" name="managerLogin" value="employee"/> Login as Employee <br/><br/>
 		<input type="submit" name="login" value="Login"/>
 	</form>
 

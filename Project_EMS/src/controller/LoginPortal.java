@@ -52,7 +52,7 @@ public class LoginPortal extends HttpServlet {
 			else
 				response.sendRedirect("login.jsp");
 		}
-		else {
+		else if(request.getParameter("managerLogin").equals("employee")){
 			if(EmployeeDao.loginAuthentication(email, password)) {
 				Employee emp = new Employee();
 				emp = AdminDao.getEmployeeByEmail(email);
