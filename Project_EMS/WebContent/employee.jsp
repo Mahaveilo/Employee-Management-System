@@ -7,7 +7,7 @@
 <title>Employee</title>
 </head>
 <body>
-	Your are: <br/>
+	You are: <br/>
 	<%! Employee emp = new Employee(); %>
 	<% 
 		emp = (Employee)session.getAttribute("currentEmployee");

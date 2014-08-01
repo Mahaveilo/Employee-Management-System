@@ -10,20 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Employee;
-import dao.*;
+import dao.AdminDao;
+import dao.EmployeeDao;
+import dao.ManagerDao;
 
 /**
- * Servlet implementation class LoginPortal
+ * Servlet implementation class ManagerPortal
  */
-@WebServlet("/LoginPortal")
-public class LoginPortal extends HttpServlet {
-	// employee / manager login portal
+@WebServlet("/ManagerPortal")
+public class ManagerPortal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginPortal() {
+    public ManagerPortal() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,28 +42,7 @@ public class LoginPortal extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		if(request.getParameter("managerLogin").equals("maneger")) {
-			if(EmployeeDao.loginAuthentication(email, password) && ManagerDao.isManagerOrNot(email)) {
-				Employee emp = new Employee();
-				emp = AdminDao.getEmployeeByEmail(email);
-				HttpSession session = request.getSession(true);	    
-		        session.setAttribute("currentEmployee", emp);
-				response.sendRedirect("manager.jsp");
-			}
-			else
-				response.sendRedirect("login.jsp");
-		}
-		else {
-			if(EmployeeDao.loginAuthentication(email, password)) {
-				Employee emp = new Employee();
-				emp = AdminDao.getEmployeeByEmail(email);
-				HttpSession session = request.getSession(true);	    
-		        session.setAttribute("currentEmployee", emp);
-				response.sendRedirect("employee.jsp");
-			}
-			else
-				response.sendRedirect("login.jsp");
-		}
+		
 	}
 
 }
